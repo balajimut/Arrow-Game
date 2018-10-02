@@ -6,6 +6,7 @@ var currentConstrainObject;
 var lineWidth = 3;
 var arrowList = [];
 var arrowPointList = [];
+window.chainElementArray = [];
 
 Example.chains = function() {
 	var body = document.getElementsByTagName('body')[0];
@@ -63,7 +64,7 @@ Example.chains = function() {
 	// add bodies
 	var group = Body.nextGroup(true);
 	var ropeC = Composites.stack(100, 50, 1, 20, 1, 1, function(x, y) {
-		return Bodies.rectangle(x - 40, y, 50, 20, {
+		var chainElement =  Bodies.rectangle(x - 40, y, 50, 20, {
 			render : {
 				fillStyle : '#03A9F4'
 			},
@@ -72,6 +73,8 @@ Example.chains = function() {
 			},
 			chamfer : 5
 		});
+		window.chainElementArray.push(chainElement);
+		return chainElement;
 	});
 
 	Composites.chain(ropeC, 0.3, 0, -0.3, 0, {
@@ -165,7 +168,7 @@ Example.chains = function() {
 		currentConstrainObject = undefined;
 	});
 	Events.on(mouseConstraint, "enddrag", function(event) {
-		if (currentSelectedCircle === undefined) {
+		if ( currentSelectedCircle === undefined && window.chainElementArray.indexOf(event.body)!==-1) {
 			var points = JSON
 					.parse(JSON.stringify(event.mouse.mouseupPosition));
 			var circleObject = Bodies.circle(points.x, points.y, 14, {
