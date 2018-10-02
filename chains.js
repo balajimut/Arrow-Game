@@ -22,9 +22,19 @@ Example.chains = function() {
 //			Body.applyForce( newArrowObject, {x: newArrowObject.position.x, y: newArrowObject.position.y}, {x: -15, y: 0});
 		});
 	};
-	var Engine = Matter.Engine, Render = Matter.Render, Runner = Matter.Runner, Body = Matter.Body, Composite = Matter.Composite, Composites = Matter.Composites, Constraint = Matter.Constraint, MouseConstraint = Matter.MouseConstraint, Mouse = Matter.Mouse, World = Matter.World, Bodies = Matter.Bodies;
-	var Events = Matter.Events;
-	var Vertices = Matter.Vertices;
+	var Engine = Matter.Engine, 
+		Render = Matter.Render, 
+		Runner = Matter.Runner, 
+		Body = Matter.Body, 
+		Composite = Matter.Composite, 
+		Composites = Matter.Composites, 
+		Constraint = Matter.Constraint, 
+		MouseConstraint = Matter.MouseConstraint, 
+		Mouse = Matter.Mouse, 
+		World = Matter.World, 
+		Bodies = Matter.Bodies,
+		Events = Matter.Events,
+		Vertices = Matter.Vertices;
 	// create engine
 	var engine = Engine.create(), world = engine.world;
 
